@@ -288,9 +288,21 @@ class CardDrawer:
 			bg_y = pos_y + (self.block_height - bg_image.get_height()) / 2
 			self.window_surface.blit(bg_image, (bg_x, bg_y))
 
+		# Determine font
+		font = "default"
+		if "font" in template.keys():
+			if template["font"] in self.fonts.keys():
+				font = template["font"]
+			else:
+				print("!!! Could not find font for " + template["name"] + " template: " + template["font"])
+		if "font" in block.keys():
+			if block["font"] in self.fonts.keys():
+				font = block["font"]
+			else:
+				print("!!! Could not find font for " + block["name"] + " block: " + block["font"])
+
 		# Render content of block
 		text = self.getText(card, block)
-		font = "default"
 		self.renderText(text, start_x=pos_x, start_y=pos_y, color=color, width=self.block_width, height=self.block_height, font=font, align=self.align_x, v_align=self.align_y, rotation=self.block_rotation, card=card)
 
 	# drawCard
@@ -407,11 +419,11 @@ class CardDrawer:
 			color = constants.ACTUAL_BLACK
 		if font == None:
 			font = 'rules'
-		if line_space == None:
-			line_space = self.text_margin
 
 		# Define space images
 		space_image = self.fonts[font].render(" ", True, constants.ACTUAL_BLACK)
+		if line_space == None:
+			line_space = space_image.get_height() / 32
 
 		# Initialize variables
 		x = start_x
@@ -512,7 +524,8 @@ class CardDrawer:
 				total_width = image_width
 				if cur_width > 0:
 					images += [space_image]
-					total_width += self.space_width
+					# total_width += self.space_width
+					total_width += space_image.get_width()
 				images += [image]
 
 				# Update position for next image
@@ -585,7 +598,7 @@ class CardDrawer:
 
 		# Find the total height
 		for image in images:
-			if image.get_height() > total_height:
+			if image != space_image and image.get_height() > total_height:
 				total_height = image.get_height()
 
 		# Render images

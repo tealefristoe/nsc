@@ -1,5 +1,7 @@
 
 {
+	"magic_card":"magic_card",
+	"magic_card_creature":"magic_card_creature",
 	"playing_card":"playing_card",
 	"face_card":"face_card"
 }

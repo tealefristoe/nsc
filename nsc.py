@@ -20,8 +20,7 @@ def main():
 	# Otherwise, only cards with names in the list will be included.
 	# Similarly for desired_types (use constants.TYPES[type] for legal strings).
 	desired_cards = []
-	# desired_types = ["face_card"]
-	desired_types = []
+	desired_types = ["playing_card", "face_card"]
 
 	# Get card info from files
 	card_files = os.listdir(constants.INPUT_DIR)

@@ -167,3 +167,33 @@ No problem. In this tutorial, you'll turn the king to into a beggar. You'll be l
 5. Search for "card_number":"K" in your file. (Most text editors will search for a string with Ctrl + f.) Replace the K with B. You should do this 4 times, once for each suit.
 
 6. Now go back to the command prompt and run NSC (python nsc.py). Assuming all goes well, you should now find a new folder in the output directory with Kings that have Bs instead of Ks!
+
+
+Customization Part III: Magic Cards
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+So far we've just looked at the playing cards, but Nothing Sacred Cards also comes with some made up magic cards. In this mini-tutorial, you'll learn how to generate these magic cards, and you'll even tinker with some code! (Don't worry, only a little.)
+
+1. Go to your NSC directory.
+
+2. Open nsc.py in a text editor.
+
+	a. nsc.py is a Python script. It's the main script you run to generate cards (that's why you always type "python nsc.py" at the command line).
+
+	b. nsc.py calls other Python programs to do most of the work. nsc.py's job is to control the overall job.
+
+3. nsc.py contains a few variabls that you might want to tweak to control how cards are generated.
+
+	a. On line 17, you'll see a line that looks like "save_pdf = False". Changing this to "save_pdf = True" will make NSC create a pdf of all the cards you created after generating them to make it really easy to print them. But it also takes some time, which is why there's this handy way to turn it on or off.
+
+	b. On line 22, you'll see a line that looks like "desired_cards = []". Remember how json files use [ and ] to indicate lists? Python does too! [] is the empty list. The desired_cards variable lets you only print out specific cards. Just fill that list with the names of the cards you want to print, like ["Ace of Books", "Ace of Guns", "Ace of Pollution"], and NSC will only generate those cards. Making desired_cards an empty list makes NSC generate all the cards it can. Remember to put the names of the cards in EXACTLY like how they're written in the card file they come from.
+
+	c. On line 23, you'll see a line that looks like 'desired_types = ["playing_card", "face_card"]'. Guess what. desired_types works just like desired_cards, except you give it types of cards you want to print instead of card names! Right now, NSC will only print cards with type "playing_card" and "face_card" (type is defined in the card file). If you make desired_types an empty list (like []), it will generate cards of all types.
+
+	d. Right now, we only want to print magic cards, so change line 23 to 'desired_types = ["magic_card", "magic_card_creature"]' (magic_card_creature prints power and toughness, while magic_card doesn't).
+
+4. Go back to the command prompt and run NSC (python nsc.py). If all goes well, you should see some spiffy looking magic cards flash on the screen. Head over to the output folder to check out the new cards!
+
+5. The magic cards are quite a bit more complex than the playing cards, both in terms of their card file (magic_cards.json in the nsc/json directory) and in terms of their template (magic_card_creature.json in nsc/templates). Check out those files to give them a try.
+
+6. Try making your own magic card! Start simple, by just copying an existing one from magic_cards.json and tweaking it a little. Remember that not all of the symbols from magic are in NSC, so try to stick with color mana, 1 or 2 colorless mana, and the tap symbol for now. If you're feeling extra adventurous, why not head over the nsc.py and tell it to only generate the new card you're working on! (Hint: Use desired_cards wisely.)

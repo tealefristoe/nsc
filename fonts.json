@@ -5,6 +5,12 @@
 "size":64},
 {"name":"name",
 "font":"garamond",
-"size":92}
+"size":92},
+{"name":"magic_default",
+"font":"garamond",
+"size":42},
+{"name":"magic_rules",
+"font":"garamond",
+"size":40}
 ]
 
