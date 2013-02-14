@@ -1,0 +1,31 @@
+
+Card Reference
+-=-=-=-=-=-=-=
+
+A Nothing Sacred Cards card file contains information about what cards will appear in a game. A file contains a json array, each element of which is a dictionary containing the information for a single unique card. 
+
+
+REQUIRED FIELDS:
+
+name - The name of the card. Each name should be unique or card output may not work correctly.
+
+type - The type of the card, used to connect the card to a template (through the type_map.json file). Can also be used to control which cards are printed.
+
+
+OPTIONAL FIELDS:
+
+number - The number of times this card should appear in the game. Default is 1.
+
+other fields - Most information will occur in fields you define, which you will reference in template blocks. These other fields will generally contain strings that are specially formatted.
+
+Special field formatting:
+
+\\n - New line. Use to end the current line and start a new one. Use "\\n \\n" to create a blank line between the current line and the next one.
+
+\\b - Turn on or off bold. Make sure you turn off bold in the same string you turn it on, or bolding behavior might be strange, such as bolding text on the wrong card.
+
+\\i - Turn on or off italic. Be careful to turn it off, just like bold.
+
+images - Reference images in the art/inline and art/full by using "\\image_name". Do not include the file extension (.jpg, .png). Images in art/inline are displayed inline with text. Images in art/full will create a new line and display the image centered in a line of its own.
+
+\\img:field_reference - Using "\\img:" allows you to reference an image in another field. This allows you to use fields much like variables.

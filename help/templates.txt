@@ -1,0 +1,92 @@
+
+Template Reference
+-=-=-=-=-=-=-=-=-=
+
+Templates are a way to describe to Nothing Sacred Cards how cards should be displayed.
+
+Templates are dictionaries containing the following fields.
+
+
+REQUIRED FIELDS:
+
+name - The name of the template. This must match what is found in type_map.json.
+
+blocks - These are the different visual components of a template. See below for details.
+
+
+
+OPTIONAL FIELDS:
+
+size - The size of a card for this template. Defaults to "poker". *Defaults to the size of the background_image if one is specified.
+Legal optoins:
+	"poker" - 2.5" x 3.5"
+	"mini" - 1.75" x 2.5"
+
+background_image - An image to display in the background. Displayed in the center.
+
+border_color - The color of the border around the card. The border is the size of the margin (.125" by default). Default is no border.
+
+background_color - The background color for cards of this template. Default color is white.
+
+color - The text color for cards of this template.
+
+*width - The width of cards of this template. Overrides size choice.
+
+*height - The height of cards of this template. Overrides size choice.
+
+
+Block Reference
+-=-=-=-=-=-=-=-
+
+A block is a collection of text and/or images to place in a particular spot on a card.
+
+
+REQUIRED FIELDS:
+
+name - The name of the block.
+
+
+OPTIONAL FIELDS:
+
+content - The text and/or images to place in the block. Default is "".
+Formatting:
+	Directly write text.
+	For images, use "\\image_name", where a file like image_name.jpg or image_name.png is in the Nothing Sacred Cards art/full or art/inline directories.
+	Use "\\attribute" to reference attributes of a particular card. For example, if each card has a suit image and you want to display the card's suit image in a block, include "suit":"\\image" in the card file, then include "\\suit" in the template content string.
+	"\\n" creates a new paragraph.
+	"\\b" and "\\i" turn on and off bold and italic, respectively.
+	*"\\font:font_choice" will switch the font to font_choice. "\\font:default" will return the font to the default font for the block.
+
+pos_x, pos_y - The position on the card where this block will be anchored. Defaults are "left, top"
+Legal options:
+	"flush_left", "flush_right", "flush_top", "flush_bottom" - Against the edge of the card.
+	"left", "right", "top", "bottom" - Up to the margin against the edge of the card.
+	"center" - The center of the card.
+	*"\\block_name:pos_word" - A position relative to another block. The block must be defined before this one.
+	*any number - That many pixels right or down from the top left corner of the card.
+
+anchor_x, anchor_y - The point on the block that will be placed at the position. Defaults are "left" and top".
+Legal options:
+	"left", "right", "top", "bottom" - That edge of the card. For example, "left" and "top" would place the block with its top left corner at the point (pos_x, pos_y).
+	"center" - The center of the card. "center" and "center" would center the block at the point (pos_x, pos_y).
+	*any number - That many pixels right or down from the top left corner of the block.
+
+align_x, align_y - How the content should be aligned within the block. Defaults are "left" and "top".
+Legal options:
+	"left", "right", "top", "bottom" - Align content to that edge of the block.
+	"center" - Align content to the center of the block.
+
+width, height - The width and heigh of the block. If there is a background image specified, the defaults are the dimensions of that image. Otherwise, defaults are card_width - 2 * margin and card_height - 2 * margin.
+Legal options:
+	*any number: That many pixels.
+
+rotation - The number of degrees the content of the block should be rotated. Default is 0.
+Legal options:
+	0 - Content should not be rotated.
+	180 - Content should be rotated 180 degrees, so it is face up when the card is upside down.
+
+background_color - The color to fill in the background with. Defaults to a transparent.
+
+background_image - The image to display in the background of this. Will be printed in the center of the block, and will define the block's size if width and height aren't otherwise defined.
+Legal options:
+	"image_name" - The name of a file (without the .png or .jpg extension) in the background directory.

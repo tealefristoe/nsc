@@ -1,0 +1,28 @@
+
+{
+	"name":"playing_card",
+	"size":"poker",
+	"blocks":[
+		{"name":"top_left",
+		"width":80,
+		"height":200,
+		"align_x":"center",
+		"content":"\\card_number \\n \\small_symbol"},
+		{"name":"center",
+		"align_x":"center",
+		"align_y":"center",
+		"content":"\\center_design"},
+		{"name":"bottom_right",
+		"width":80,
+		"height":200,
+		"pos_x":"right",
+		"pos_y":"bottom",
+		"anchor_x":"right",
+		"anchor_y":"bottom",
+		"align_x":"center",
+		"align_y":"bottom",
+		"rotation":180,
+		"content":"\\card_number \\n \\small_symbol"}
+	]
+}
+

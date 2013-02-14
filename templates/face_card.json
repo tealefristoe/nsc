@@ -1,0 +1,42 @@
+
+{
+	"name":"face_card",
+	"size":"poker",
+	"blocks":[
+		{"name":"top_left",
+		"width":80,
+		"height":80,
+		"align_x":"center",
+		"content":"\\card_number \\n \\small_symbol"},
+		{"name":"top_left_suit",
+		"width":110,
+		"height":110,
+		"pos_x":150,
+		"pos_y":170,
+		"align_x":"center",
+		"align_y":"center",
+		"content":"\\large_symbol"},
+		{"name":"bottom_right_suit",
+		"width":110,
+		"height":110,
+		"pos_x":600,
+		"pos_y":880,
+		"anchor_x":"right",
+		"anchor_y":"bottom",
+		"align_x":"center",
+		"align_y":"center",
+		"content":"\\large_symbol_rotated"},
+		{"name":"bottom_right",
+		"width":80,
+		"height":80,
+		"pos_x":"right",
+		"pos_y":"bottom",
+		"anchor_x":"right",
+		"anchor_y":"bottom",
+		"align_x":"center",
+		"align_y":"bottom",
+		"rotation":180,
+		"content":"\\card_number \\n \\small_symbol"}
+	]
+}
+
