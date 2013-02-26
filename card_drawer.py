@@ -164,6 +164,14 @@ class CardDrawer:
 					replaced_words += [word]
 		return " ".join(replaced_words)
 
+	# getBlock
+	# Returns a particular block from a template, or None of the block isn't in the template.
+	def getBlock(self, block_name, template):
+		for block in template.blocks:
+			if block_name == block["name"]:
+				return block
+		return None
+
 	# drawBlock
 	# Draws a template block for the given card, returning a link to the file.
 	def drawBlock(self, card=None, block=None, template=None):
@@ -174,6 +182,24 @@ class CardDrawer:
 			bg_name = block["background_image"]
 			bg_image = self.getBackground(bg_name)
 		
+		"""
+		if "width" not in block.keys():
+			if bg_image:
+				block["actual_width"] = bg_image.get_width()
+			else:
+				block["actual_width"] = self.safe_card_width
+		else:
+			other_block = self.getBlock(block["width"], template)
+			if other_block:
+				if "actual_width" in other_block.keys():
+					block["actual_width"] = other_block["actual_width"]
+				else:
+					print("!!! Could not use width of " + other_block["name"] + " for block " + block["name"])
+					block["actual_width"] = self.safe_card_width
+			else:
+				block["actual_width"] = block["width"]
+		self.block_width = block["actual_width"]
+		"""
 		if "width" not in block.keys():
 			if bg_image:
 				self.block_width = bg_image.get_width()
@@ -330,7 +356,7 @@ class CardDrawer:
 			return
 		template = self.templates[template_name]
 		if "blocks" not in template.keys():
-			print("!!! No blocks for tempalte " + template_name)
+			print("!!! No blocks for template " + template_name)
 			return
 		blocks = template["blocks"]
 
@@ -503,6 +529,8 @@ class CardDrawer:
 						cur_height = basic_height
 						cur_width = 0
 						continue
+					else:
+						print("!!! Unknown command: " + word)
 				# Handle writing a word
 				else:
 					image = self.fonts[font].render(word, True, color)
@@ -512,7 +540,7 @@ class CardDrawer:
 
 				# Handle line wrapping
 				if width:
-					if cur_width + image_width >= width:
+					if cur_width + image_width > width:
 						lines += [{"width":cur_width, "height":cur_height, "align":align, "images":images}]
 						images = []
 						x = start_x
