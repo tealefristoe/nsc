@@ -37,7 +37,7 @@ Nothing Sacred Cards is written in Python and makes use of the Pygame and Report
 	2. Choose Advanced system settings.
 	3. Click continue if a permission window pops up.
 	4. Click the Environment Variables button.
-	5. Under System variables, select CLASSPATH and click the Edit... button.
+	5. Under System variables, select PATH and click the Edit... button.
 	6. At the end of the Variable value string, add ";C:\Python27" (or the directory you chose to install python into if something else).
 	7. Push OK on the Edit System Variable window.
 	8. Push OK on the Environment Variables window.
@@ -57,6 +57,8 @@ Setup
 ROOT_DIR = os.path.join('c:\\', 'projects', 'nothingsacred', 'nsc')
 Change this to be the path to your Nothing Sacred Cards directory. For example, if you took my advice and put Nothing Sacred Cards in c:\games\nsc, the line would look like this:
 ROOT_DIR = os.path.join('c:\\', 'games', 'nsc')
+
+4. Save the change you made to constants.py.
 
 
 Running Nothing Sacred Cards
