@@ -531,6 +531,7 @@ class CardDrawer:
 						continue
 					else:
 						print("!!! Unknown command: " + word)
+						continue
 				# Handle writing a word
 				else:
 					image = self.fonts[font].render(word, True, color)
