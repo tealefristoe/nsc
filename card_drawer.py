@@ -111,9 +111,9 @@ class CardDrawer:
 
 		for c in cards:
 			if raw_card_names:
-				image = pygame.image.load(input_dir + "\\" + c)
+				image = pygame.image.load(os.path.join(input_dir, c))
 			else:
-				image = pygame.image.load(input_dir + "\\" + self.convertName(c["name"]) + ".png")
+				image = pygame.image.load(os.path.join(input_dir, self.convertName(c["name"]) + ".png"))
 			# if not self.horizontal_cards:
 			image = pygame.transform.rotate(image, 90)
 			self.window_surface.blit(image, (x, y))
@@ -812,7 +812,7 @@ class CardDrawer:
 		# Make output folder
 		n = datetime.datetime.today()
 		self.out_dir = os.path.join(constants.OUTPUT_DIR, str(n.year) + '_' + str(n.month) + '_' + str(n.day) + '_' + str(n.hour) + '_' + str(n.minute) + '_' + str(n.second))
-		os.mkdir(self.out_dir)
+		os.makedirs(self.out_dir)
 
 	def changeSize(self, width, height):
 		self.window_surface = pygame.display.set_mode((int(width), int(height)), 0, 32)
