@@ -32,7 +32,13 @@ Nothing Sacred Cards is written in Python and makes use of the Pygame and Report
 	2. Make sure you get the most recent version for python 2.7.
 	3. To use .png files, you will need the Python Imaging Library, which you can get here: http://www.pythonware.com/products/pil/
 
-4. Setup path variables to access Python from the command line. (Instructions for windows... for mac and linux, you'll have to do some internet research.)
+Mac note: I don't know much about macs, and ReportLab seems to suck on it! Here are two possible solutions:
+	1. Install ReportLab on your mac following these nasy directions: http://two.pairlist.net/pipermail/reportlab-users/2009-May/008351.html
+	2. Do not bother with creating PDFs. This makes printing much more annoying, but at least you can generate cards. To do this:
+		a. Make sure save_pdf is set to False on line 17 in nsc.py
+		b. Comment out lines 13 and 14 from card_drawer.py (put a # at the beginning of those lines).
+
+4. Setup path variables to access Python from the command line. (Instructions for windows... for mac and linux, I don't think you need to do this, but you might need to do some internet research.)
 	1. Right click on My Computer and select properties.
 	2. Choose Advanced system settings.
 	3. Click continue if a permission window pops up.
@@ -43,28 +49,13 @@ Nothing Sacred Cards is written in Python and makes use of the Pygame and Report
 	8. Push OK on the Environment Variables window.
 	9. Push OK on the System Properties window.
 
-5. You should be ready to set up Nothing Sacred Cards!
-
-
-Setup
--=-=-
-
-1. Unzip Nothing Sacred Cards into the directory of your choice. I recommend a directory without spaces, like c:\games\nsc.
-
-2. Navigate to your Nothing Sacred Cards directory and open constants.py in a text editor (notepad, vi, emacs, textmate, etc).
-
-3. The fourth line in the file looks like this:
-ROOT_DIR = os.path.join('c:\\', 'projects', 'nothingsacred', 'nsc')
-Change this to be the path to your Nothing Sacred Cards directory. For example, if you took my advice and put Nothing Sacred Cards in c:\games\nsc, the line would look like this:
-ROOT_DIR = os.path.join('c:\\', 'games', 'nsc')
-
-4. Save the change you made to constants.py.
+5. Unzip Nothing Sacred Cards into the directory of your choice. I recommend a directory without spaces, like c:\games\nsc.
 
 
 Running Nothing Sacred Cards
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-Now that the prerequisites are installed and NSC has been configured for your computer, it's time to test it to make sure everything is working!
+Now that the prerequisites are installed and NSC has been set up, it's time to test it to make sure everything is working!
 
 1. Navigate to your NSC directory.
 

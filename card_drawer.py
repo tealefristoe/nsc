@@ -135,7 +135,7 @@ class CardDrawer:
 			num_string = "0" + str(self.sheets)
 		else:
 			num_string = str(self.sheets)
-		self.printToFile(self.out_dir + '\\sheet' + num_string + '.png')
+		self.printToFile(os.path.join(self.out_dir, 'sheet' + num_string + '.png'))
 		self.sheets += 1
 
 		return cards[card_count:]
@@ -421,7 +421,7 @@ class CardDrawer:
 
 		# Print card
 		pygame.display.update()
-		self.printToFile(self.out_dir + "\\" + self.convertName(card["name"]) + '.png')
+		self.printToFile(os.path.join(self.out_dir, self.convertName(card["name"]) + '.png'))
 		print("")
 
 	def drawLine(self, x=0, y=0, length=0, horizontal=True, color=None, width=-1):
@@ -684,7 +684,7 @@ class CardDrawer:
 		pdf_x_offset = pdf_margin * pdf_resolution
 		pdf_y_offset = -4 * pdf_margin * pdf_resolution
 		back_pdf_y_offset = pdf_margin * pdf_resolution
-		c = canvas.Canvas(self.out_dir + '\\cards.pdf', pagesize=page_size)
+		c = canvas.Canvas(os.path.join(self.out_dir, 'cards.pdf'), pagesize=page_size)
 
 		pngs = os.listdir(self.out_dir)
 		for f in pngs:
@@ -811,7 +811,7 @@ class CardDrawer:
 
 		# Make output folder
 		n = datetime.datetime.today()
-		self.out_dir = constants.OUTPUT_DIR + '\\' + str(n.year) + '_' + str(n.month) + '_' + str(n.day) + '_' + str(n.hour) + '_' + str(n.minute) + '_' + str(n.second)
+		self.out_dir = os.path.join(constants.OUTPUT_DIR, str(n.year) + '_' + str(n.month) + '_' + str(n.day) + '_' + str(n.hour) + '_' + str(n.minute) + '_' + str(n.second))
 		os.mkdir(self.out_dir)
 
 	def changeSize(self, width, height):

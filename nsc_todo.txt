@@ -1,6 +1,7 @@
 
 text
 	change fonts within text
+	allow rankings of fonts
 
 templates
 	Block:

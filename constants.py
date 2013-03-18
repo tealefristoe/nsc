@@ -1,7 +1,9 @@
 
+import os
 import os.path
 
-ROOT_DIR = os.path.join('c:\\', 'projects', 'nsc')
+# ROOT_DIR = os.path.join('c:\\', 'projects', 'nsc')
+ROOT_DIR = os.getcwd()
 ART_DIR = os.path.join(ROOT_DIR, 'art')
 INLINE_DIR = os.path.join(ART_DIR, 'inline')
 FULL_DIR = os.path.join(ART_DIR, 'full')
