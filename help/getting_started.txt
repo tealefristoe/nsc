@@ -111,13 +111,13 @@ No problem. In this tutorial, you'll turn the king to into a beggar. You'll be l
 
 1. Go to your NSC directory.
 
-2. Go to the json directory, which should be in there.
+2. Go to the cards directory, which should be in there.
 
 3. Open playing_cards.json in a text editor.
 
 	a. A json file is a simple way to structure data. For more information about it, look at the json help file.
 
-	b. json files in the json directory store the information about your cards. You can have any number of files here, as long as they're structured like the json help file describes.
+	b. json files in the cards directory store the information about your cards. You can have any number of files here, as long as they're structured like the json help file describes.
 
 4. This is what your card file will look like. It's intimidating, but we'll go over it so you have the chance to figure it out bit by bit.
 
@@ -187,6 +187,6 @@ So far we've just looked at the playing cards, but Nothing Sacred Cards also com
 
 4. Go back to the command prompt and run NSC (python nsc.py). If all goes well, you should see some spiffy looking magic cards flash on the screen. Head over to the output folder to check out the new cards!
 
-5. The magic cards are quite a bit more complex than the playing cards, both in terms of their card file (magic_cards.json in the nsc/json directory) and in terms of their template (magic_card_creature.json in nsc/templates). Check out those files to give them a try.
+5. The magic cards are quite a bit more complex than the playing cards, both in terms of their card file (magic_cards.json in the nsc/cards directory) and in terms of their template (magic_card_creature.json in nsc/templates). Check out those files to give them a try.
 
 6. Try making your own magic card! Start simple, by just copying an existing one from magic_cards.json and tweaking it a little. Remember that not all of the symbols from magic are in NSC, so try to stick with color mana, 1 or 2 colorless mana, and the tap symbol for now. If you're feeling extra adventurous, why not head over the nsc.py and tell it to only generate the new card you're working on! (Hint: Use desired_cards wisely.)

@@ -30,6 +30,10 @@ background_color - The background color for cards of this template. Default colo
 
 color - The text color for cards of this template.
 
+font - The default font for this template. Default font is "default".
+Legal options:
+	The name of a font in fonts.json.
+
 *width - The width of cards of this template. Overrides size choice.
 
 *height - The height of cards of this template. Overrides size choice.
@@ -55,7 +59,7 @@ Formatting:
 	Use "\\attribute" to reference attributes of a particular card. For example, if each card has a suit image and you want to display the card's suit image in a block, include "suit":"\\image" in the card file, then include "\\suit" in the template content string.
 	"\\n" creates a new paragraph.
 	"\\b" and "\\i" turn on and off bold and italic, respectively.
-	*"\\font:font_choice" will switch the font to font_choice. "\\font:default" will return the font to the default font for the block.
+	"\\font:font_choice" will switch the font to font_choice. "\\font:default" will return the font to the default font for the block.
 
 pos_x, pos_y - The position on the card where this block will be anchored. Defaults are "left, top"
 Legal options:
@@ -90,3 +94,7 @@ background_color - The color to fill in the background with. Defaults to a trans
 background_image - The image to display in the background of this. Will be printed in the center of the block, and will define the block's size if width and height aren't otherwise defined.
 Legal options:
 	"image_name" - The name of a file (without the .png or .jpg extension) in the background directory.
+
+font - The default font for this template. Default font is "default".
+Legal options:
+	The name of a font in fonts.json.

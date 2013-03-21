@@ -445,6 +445,7 @@ class CardDrawer:
 			color = constants.ACTUAL_BLACK
 		if font == None:
 			font = 'rules'
+		default_font = font
 
 		# Define space images
 		space_image = self.fonts[font].render(" ", True, constants.ACTUAL_BLACK)
@@ -490,6 +491,16 @@ class CardDrawer:
 							elif code in card.keys():
 								if card[code][0] == "\\":
 									code = card[code][1:]
+						if command == "font":
+							if code == "default":
+								font = default_font
+								continue
+							elif code not in self.fonts.keys():
+								print("!!! Attempt to use an unknown font: " + code)
+								code = None
+							else:
+								font = code
+								continue
 					# End of Line
 					if code == "n":
 						lines += [{"width":cur_width, "height":cur_height, "align":align, "images":images}]

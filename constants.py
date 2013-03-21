@@ -9,7 +9,7 @@ INLINE_DIR = os.path.join(ART_DIR, 'inline')
 FULL_DIR = os.path.join(ART_DIR, 'full')
 BACKGROUND_DIR = os.path.join(ART_DIR, 'background')
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'output')
-INPUT_DIR = os.path.join(ROOT_DIR, 'json')
+INPUT_DIR = os.path.join(ROOT_DIR, 'cards')
 TEMPLATE_DIR = os.path.join(ROOT_DIR, 'templates')
 
 TYPE_MAP_FILE = os.path.join(ROOT_DIR, 'type_map.json')
