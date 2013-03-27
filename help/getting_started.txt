@@ -10,7 +10,7 @@ Keep everything in text files! Source control it, search it, and easily change y
 
 Separate content and presentation! Keep your card information in one file, and tell Nothing Sacred Cards how to display that information in a separate file. That means you can experiment with different card layouts rapdily without messing with the actual content of the cards.
 
-Automate card layout! Nothing Sacred Cards takes card content and your layout specifications to generate card images with one button. Instantly get testable, printable cards!
+Automate card layout! Nothing Sacred Cards takes card content and your layout specifications to generate card images with one button. Instantly get testable cards in a single PDF file, ready for printing!
 
 Inline images! Freely mix symbols and text to make your cards as easy to read as possible. Want to change a symbol or image later? No problem! Just change the image file and re-generate all of the cards!
 
@@ -32,11 +32,12 @@ Nothing Sacred Cards is written in Python and makes use of the Pygame and Report
 	2. Make sure you get the most recent version for python 2.7.
 	3. To use .png files, you will need the Python Imaging Library, which you can get here: http://www.pythonware.com/products/pil/
 
-Mac note: I don't know much about macs, and ReportLab seems to suck on it! Here are two possible solutions:
+Mac note: I don't know much about macs, and ReportLab seems to suck on it! Here are three possible solutions:
 	1. Install ReportLab on your mac following these nasy directions: http://two.pairlist.net/pipermail/reportlab-users/2009-May/008351.html
+	2. One of my testers was kind enough to create a list of the steps he used to get ReportLab setup on his machine. You can follow them here: https://github.com/tealefristoe/nsc/wiki/OS-X-Instructions
 	2. Do not bother with creating PDFs. This makes printing much more annoying, but at least you can generate cards. To do this:
-		a. Make sure save_pdf is set to False on line 17 in nsc.py
-		b. Comment out lines 13 and 14 from card_drawer.py (put a # at the beginning of those lines).
+		a. Comment out lines 13 and 14 from card_drawer.py (put a # at the beginning of those lines).
+		b. Make sure you do not use the -p option when running Nothing Sacred Cards.
 
 4. Setup path variables to access Python from the command line. (Instructions for windows... for mac and linux, I don't think you need to do this, but you might need to do some internet research.)
 	1. Right click on My Computer and select properties.
@@ -65,15 +66,23 @@ Now that the prerequisites are installed and NSC has been set up, it's time to t
 
 3. This is a command prompt, where you're able to give the computer commands in text form. Woah. It may look scary, like the matrix, but it's really not so bad!
 
-4. In the command prompt, type "python nsc.py" (without the quotes), then push Enter.
+4. In the command prompt, type "python nsc.py -i playing_cards.json" (without the quotes), then push Enter.
 
 5. You should see text scroll up on the command window, and you should see flashes of cards in a new window, followed by flashes of sheets of cards. If this doesn't happen, something went wrong! Thankfully, that friendly command prompt should tell you if there are any errors, which you can relay back to Teale for help (or try to fix yourself if you're especially brave!).
 
 6. If all went well, you should have your very own deck of Nothing Sacred Cards!
 	1. In your NSC directory, go to output.
 	2. In output, you should see a folder with today's date. Open it up.
-	3. This folder should be full of 53 different card files, 7 sheet files, and 1 pdf file.
-	4. If you want to play with your new cards, open the pdf and print them out!
+	3. This folder should be full of 53 different card files and 7 sheet files.
+	4. Cool!
+
+7. Nothing Sacred Cards has a lot of options and features. To learn more about them, run "python nsc.py -h" at the command line (without the quotes, of course).
+	1. One particularly awesome feature is that NSC can generate PDFs of all of your cards so you can quickly print them out. Let's try that now!
+	2. At the command line, run "python nsc.py -i playing_cards.json -p". Note the -p there at the end.
+	3. Twiddle your thumbs while NSC does its thang.
+	4. Head on over to the output directory to find the most recent folder there.
+	5. In addition to the 53 different card files and the 7 sheet files, you should see a PDF file called cards.pdf.
+	6. If you want to play with your new cards, open the pdf and print them out!
 
 
 Customization Part I: The Emporer's New Suit
@@ -95,7 +104,7 @@ But the beautiful thing about Nothing Sacred Cards is that it's very easy to qui
 	1. Rename the old spade files. An easy way to do it is just adding "_old" to the end of the names. For example, "spade_medium.png" now becomes "spade_medium_old.png".
 	2. Save the new files with the spade names. Remember, NSC is looking for EXACT name matches, so typos will cause it to vomit up all sorts of text, or make your cards look weird. Make sure you have files named "spade_medium.png", "spade_large.png", and "spade_large_rotated.png".
 
-6. Go back to your command prompt and run Nothing Sacred Cards again (python nsc.py). If all goes to plan, keep going. Otherwise, contact Teale with error messages.
+6. Go back to your command prompt and run Nothing Sacred Cards again (python nsc.py -i playing_cards.py). If all goes to plan, keep going. Otherwise, contact Teale with error messages.
 
 7. Go to your output folder and look for the directory with today's date and time.
 
@@ -159,34 +168,21 @@ No problem. In this tutorial, you'll turn the king to into a beggar. You'll be l
 
 5. Search for "card_number":"K" in your file. (Most text editors will search for a string with Ctrl + f.) Replace the K with B. You should do this 4 times, once for each suit.
 
-6. Now go back to the command prompt and run NSC (python nsc.py). Assuming all goes well, you should now find a new folder in the output directory with Kings that have Bs instead of Ks!
+6. Now go back to the command prompt and run NSC (python nsc.py -i playing_cards.py). Assuming all goes well, you should now find a new folder in the output directory with Kings that have Bs instead of Ks!
 
 
 Customization Part III: Magic Cards
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-So far we've just looked at the playing cards, but Nothing Sacred Cards also comes with some made up magic cards. In this mini-tutorial, you'll learn how to generate these magic cards, and you'll even tinker with some code! (Don't worry, only a little.)
+So far we've just looked at the playing cards, but Nothing Sacred Cards also comes with some made up magic cards. In this mini-tutorial, you'll learn how to generate these magic cards!
 
 1. Go to your NSC directory.
 
-2. Open nsc.py in a text editor.
+2. Go back to the command prompt and run NSC, but instead of "python nsc.py -i playing_cards.json", use "python nsc.py -i magic_cards.json". The -i command tells Nothing Sacred Cards where to look for card info (in the cards/ directory), so you're specifying here that you want to generate cards from the magic_cards.json file.
+	a. Don't forget that you can always run "python nsc.py -h" at the command line to get a list of all of the features Nothing Sacred Cards has to offer.
 
-	a. nsc.py is a Python script. It's the main script you run to generate cards (that's why you always type "python nsc.py" at the command line).
+3. If all goes well, you should see some spiffy looking magic cards flash on the screen. Head over to the output folder to check out the new cards!
 
-	b. nsc.py calls other Python programs to do most of the work. nsc.py's job is to control the overall job.
+4. The magic cards are quite a bit more complex than the playing cards, both in terms of their card file (magic_cards.json in the nsc/cards directory) and in terms of their template (magic_card_creature.json in nsc/templates). Check out those files to give them a try.
 
-3. nsc.py contains a few variabls that you might want to tweak to control how cards are generated.
-
-	a. On line 17, you'll see a line that looks like "save_pdf = False". Changing this to "save_pdf = True" will make NSC create a pdf of all the cards you created after generating them to make it really easy to print them. But it also takes some time, which is why there's this handy way to turn it on or off.
-
-	b. On line 22, you'll see a line that looks like "desired_cards = []". Remember how json files use [ and ] to indicate lists? Python does too! [] is the empty list. The desired_cards variable lets you only print out specific cards. Just fill that list with the names of the cards you want to print, like ["Ace of Books", "Ace of Guns", "Ace of Pollution"], and NSC will only generate those cards. Making desired_cards an empty list makes NSC generate all the cards it can. Remember to put the names of the cards in EXACTLY like how they're written in the card file they come from.
-
-	c. On line 23, you'll see a line that looks like 'desired_types = ["playing_card", "face_card"]'. Guess what. desired_types works just like desired_cards, except you give it types of cards you want to print instead of card names! Right now, NSC will only print cards with type "playing_card" and "face_card" (type is defined in the card file). If you make desired_types an empty list (like []), it will generate cards of all types.
-
-	d. Right now, we only want to print magic cards, so change line 23 to 'desired_types = ["magic_card", "magic_card_creature"]' (magic_card_creature prints power and toughness, while magic_card doesn't).
-
-4. Go back to the command prompt and run NSC (python nsc.py). If all goes well, you should see some spiffy looking magic cards flash on the screen. Head over to the output folder to check out the new cards!
-
-5. The magic cards are quite a bit more complex than the playing cards, both in terms of their card file (magic_cards.json in the nsc/cards directory) and in terms of their template (magic_card_creature.json in nsc/templates). Check out those files to give them a try.
-
-6. Try making your own magic card! Start simple, by just copying an existing one from magic_cards.json and tweaking it a little. Remember that not all of the symbols from magic are in NSC, so try to stick with color mana, 1 or 2 colorless mana, and the tap symbol for now. If you're feeling extra adventurous, why not head over the nsc.py and tell it to only generate the new card you're working on! (Hint: Use desired_cards wisely.)
+5. Try making your own magic card! Start simple, by just copying an existing one from magic_cards.json and tweaking it a little. Remember that not all of the symbols from magic are in NSC, so try to stick with color mana, 1 or 2 colorless mana, and the tap symbol for now. If you're feeling extra adventurous, why not head over the nsc.py and tell it to only generate the new card you're working on! (Hint: Use the -c command wisely.)
