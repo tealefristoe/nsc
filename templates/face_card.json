@@ -1,6 +1,5 @@
 
 {
-	"name":"face_card",
 	"size":"poker",
 	"blocks":[
 		{"name":"top_left",

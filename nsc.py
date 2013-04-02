@@ -60,18 +60,15 @@ def main(options, args):
 			continue
 		file = open(os.path.join(constants.TEMPLATE_DIR, template_file))
 		template_info = json.load(file)
+		template_info["name"] = template_file[:-5]
 		templates[template_info["name"]] = template_info
-
-	# Get type map
-	file = open(constants.TYPE_MAP_FILE)
-	type_map_info = json.load(file)
 
 	# Get font info
 	fonts = {}
 	file = open(constants.FONTS_FILE)
 	fonts_info = json.load(file)
 
-	cd = card_drawer.CardDrawer(templates, type_map_info, fonts_info, output_target)
+	cd = card_drawer.CardDrawer(templates, fonts_info, output_target)
 	
 	while True:
 		for event in card_drawer.pygame.event.get():

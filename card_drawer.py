@@ -18,8 +18,6 @@ class CardDrawer:
 	window_surface = None
 	ot = None
 
-	# The relationship between types and templates found in type_map.json
-	type_map = {}
 	templates = {}
 
 	start_x = 0
@@ -58,7 +56,7 @@ class CardDrawer:
 
 	drawn_cards = []
 
-	def __init__(self, templates={}, type_map={}, fonts={}, output_target=None):
+	def __init__(self, templates={}, fonts={}, output_target=None):
 		if not self.pygame_init:
 			self.initPygame()
 
@@ -67,7 +65,6 @@ class CardDrawer:
 			self.ot = constants.OT_HOME
 
 		self.templates = templates
-		self.type_map = type_map
 
 		if not fonts:
 			self.fonts_info = {"name":"default", "font":"garamond", "size":64}
@@ -183,6 +180,7 @@ class CardDrawer:
 			bg_image = self.getBackground(bg_name)
 		
 		"""
+		# Code that doesn't work for relative block width
 		if "width" not in block.keys():
 			if bg_image:
 				block["actual_width"] = bg_image.get_width()
@@ -347,10 +345,7 @@ class CardDrawer:
 			return
 
 		# Find template
-		if card['type'] not in self.type_map.keys():
-			print("!!! Could not find type_map entry for type " + card['type'])
-			return
-		template_name = self.type_map[card['type']]
+		template_name = card['type']
 		if template_name not in self.templates.keys():
 			print("!!! Could not find template " + template_name)
 			return

@@ -9,8 +9,6 @@ Templates are dictionaries containing the following fields.
 
 REQUIRED FIELDS:
 
-name - The name of the template. This must match what is found in type_map.json.
-
 blocks - These are the different visual components of a template. See below for details.
 
 

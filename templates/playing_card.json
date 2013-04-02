@@ -1,6 +1,5 @@
 
 {
-	"name":"playing_card",
 	"size":"poker",
 	"blocks":[
 		{"name":"top_left",

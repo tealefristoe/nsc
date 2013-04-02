@@ -9,7 +9,7 @@ REQUIRED FIELDS:
 
 name - The name of the card. Each name should be unique or card output may not work correctly.
 
-type - The type of the card, used to connect the card to a template (through the type_map.json file). Can also be used to control which cards are printed.
+type - The template to use for this card. Can also be used to control which cards are printed. Legal options are the file name (without the ".json") of the template you want to use for the card.
 
 
 OPTIONAL FIELDS:
