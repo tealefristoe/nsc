@@ -15,10 +15,8 @@ output_target = constants.OT_HOME
 horizontal_cards = False
 
 def main(options, args):
-	skip_sheets = options.skip_sheets
+	sheets = options.sheets
 	save_pdf = options.save_pdf
-	if save_pdf and skip_sheets:
-		print("!!! Cannot save PDFs and use the --skip_sheets option!")
 
 	# If desired_cards is empty, all cards discovered will be included.
 	# Otherwise, only cards with names in the list will be included.
@@ -87,7 +85,7 @@ def main(options, args):
 			cd.drawCards(all_cards)
 			all_cards = []
 
-		if not skip_sheets:
+		if sheets or save_pdf:
 			cards = cd.drawSheet(cards)
 			card_drawer.pygame.display.update()
 			if len(cards) == 0:
@@ -103,8 +101,8 @@ if __name__ == "__main__":
 	parser = optparse.OptionParser(usage="""%prog [options]
 Nothing Sacred Cards - Create and rapidly iterate cards while designing board game.""",
 			version = "%prog 1.0")
-	parser.add_option("-s", "--skip_sheets", dest="skip_sheets", action="store_true", help="Do not generate sheets of cards after creating cards. Note: Do not use this option if you'd like to generate pdfs.", default=False)
-	parser.add_option("-p", "--pdf", dest="save_pdf", action="store_true", help="Generate a pdf of all cards for printing. Note: Will not work if sheets are skipped.", default=False)
+	parser.add_option("-s", "--sheets", dest="sheets", action="store_true", help="Generate sheets of cards after creating cards. Note: Sheets will also be generated if you use the --pdf option.", default=False)
+	parser.add_option("-p", "--pdf", dest="save_pdf", action="store_true", help="Generate a pdf of all cards for printing. Note: Will generate sheets.", default=False)
 	parser.add_option("-c", "--card", dest="desired_cards", action="append", help="The name of a card to generate. Can be used multiple times to generate multiple cards. If none specified, all cards will be generated.")
 	parser.add_option("-t", "--type", dest="desired_types", action="append", help="The type of card to generate. Can be used multiple times to generate multiple types of cards. If none specified, all types will be generated.")
 	parser.add_option("-i", "--input_file", dest="input_files", action="append", help="The input file (in the cards/ directory) to use for generating cards. Can be used multiple times to get cards from multiple input files. If none specified, all .json files in the cards/ directory will be used.")

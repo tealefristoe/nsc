@@ -361,8 +361,11 @@ class CardDrawer:
 		pygame.draw.rect(self.window_surface, constants.LIGHT_GREY, pygame.Rect(self.start_x, self.start_y, self.card_width, self.card_height))
 
 		# Draw inner border
-		if "border_color" in template.keys():
-			border_color = self.getColor(template["border_color"])
+		if "border_color" in template.keys() or "border_color" in card.keys():
+			if "border_color" in card.keys():
+				border_color = self.getColor(card["border_color"])
+			else:
+				border_color = self.getColor(template["border_color"])
 			border_x = self.start_x + self.line_width
 			border_y = self.start_y + self.line_width
 			border_width = self.card_width - 2 * self.line_width

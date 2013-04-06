@@ -16,6 +16,8 @@ OPTIONAL FIELDS:
 
 number - The number of times this card should appear in the game. Default is 1.
 
+border_color - The color that should appear around the border for this card.
+
 other fields - Most information will occur in fields you define, which you will reference in template blocks. These other fields will generally contain strings that are specially formatted.
 
 Special field formatting:

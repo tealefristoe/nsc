@@ -138,7 +138,7 @@ No problem. In this tutorial, you'll turn the king to into a beggar. You'll be l
 
 	d. Each card has to have a "name". Each card's name should be different, and certain special characters might break the program. It can be used to specify specific cards to print.
 
-	e. Each card has to have a "type". This determines which template the card will use to displayits information.
+	e. Each card has to have a "type". This determines which template the card will use to display its information.
 
 	f. Cards don't need a "number", but this key shows how many copies of the card should be included in the deck. If you don't include a number, 1 copy will be included. If you choose 0, the card will not be included at all.
 
