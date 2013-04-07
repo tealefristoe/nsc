@@ -94,8 +94,27 @@ class CardDrawer:
 		self.changeSize(self.window_width, self.window_height)
 		self.window_surface.fill(constants.WHITE)
 
-		row_cards = int(self.window_height / self.card_width)
-		col_cards = int(self.window_width / self.card_height)
+		# Determine best orientation for cards
+		printable_height = self.window_height - .75 * self.resolution
+		printable_width = self.window_width - .75 * self.resolution
+		normal_row_cards = int(printable_height / self.card_height)
+		normal_col_cards = int(printable_width / self.card_width)
+		normal_card_count = normal_row_cards * normal_col_cards
+		rotated_row_cards = int(printable_height / self.card_width)
+		rotated_col_cards = int(printable_width / self.card_height)
+		rotated_card_count = rotated_row_cards * rotated_col_cards
+		if normal_card_count > rotated_card_count:
+			row_cards = normal_row_cards
+			col_cards = normal_col_cards
+			card_dy = self.card_height
+			card_dx = self.card_width
+			rotate_card = False
+		else:
+			row_cards = rotated_row_cards
+			col_cards = rotated_col_cards
+			card_dy = self.card_width
+			card_dx = self.card_height
+			rotate_card = True
 
 		start_x = 0
 		x = start_x
@@ -111,17 +130,17 @@ class CardDrawer:
 				image = pygame.image.load(os.path.join(input_dir, c))
 			else:
 				image = pygame.image.load(os.path.join(input_dir, self.convertName(c["name"]) + ".png"))
-			# if not self.horizontal_cards:
-			image = pygame.transform.rotate(image, 90)
+			if rotate_card:
+				image = pygame.transform.rotate(image, 90)
 			self.window_surface.blit(image, (x, y))
 			seen_cards += [c]
 
-			y += self.card_width
+			y += card_dy
 			cards_r += 1
 			if cards_r == row_cards:
 				y = start_y
 				cards_r = 0
-				x += self.card_height
+				x += card_dx
 				cards_c += 1
 			card_count += 1
 			if cards_c == col_cards:
@@ -666,6 +685,9 @@ class CardDrawer:
 			if size == "poker":
 				self.raw_card_width = constants.POKER_WIDTH
 				self.raw_card_height = constants.POKER_HEIGHT
+			elif size == "horizontal_poker":
+				self.raw_card_height = constants.POKER_WIDTH
+				self.raw_card_width = constants.POKER_HEIGHT
 			elif size == "mini":
 				self.raw_card_width = constants.MINI_WIDTH
 				self.raw_card_height = constants.MINI_HEIGHT

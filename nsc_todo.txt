@@ -1,6 +1,8 @@
 
+bugs
+	different sized cards in one file
+
 text
-	change fonts within text
 	allow rankings of fonts
 
 templates

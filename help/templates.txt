@@ -18,6 +18,7 @@ OPTIONAL FIELDS:
 size - The size of a card for this template. Defaults to "poker". *Defaults to the size of the background_image if one is specified.
 Legal optoins:
 	"poker" - 2.5" x 3.5"
+	"horizontal_poker" - 3.5" x 2.5"
 	"mini" - 1.75" x 2.5"
 
 background_image - An image to display in the background. Displayed in the center.
