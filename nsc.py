@@ -30,6 +30,18 @@ def main(options, args):
 	cards = []
 	input_files = options.input_files
 	if input_files:
+		# Add .json to input files that have that omitted
+		correct_input_files = []
+		for input_file in input_files:
+			if input_file[-5:] != '.json':
+				correct_input_files += [input_file + '.json']
+			else:
+				correct_input_files += [input_file]
+		input_files = correct_input_files
+		# Display error messages when an input file can't be found
+		for input_file in input_files:
+			if input_file not in card_files:
+				print("!!! Could not find card file " + input_file)
 		desired_card_files = []
 		for card_file in card_files:
 			if card_file in input_files:
@@ -104,7 +116,11 @@ Nothing Sacred Cards - Create and rapidly iterate cards while designing board ga
 	parser.add_option("-s", "--sheets", dest="sheets", action="store_true", help="Generate sheets of cards after creating cards. Note: Sheets will also be generated if you use the --pdf option.", default=False)
 	parser.add_option("-p", "--pdf", dest="save_pdf", action="store_true", help="Generate a pdf of all cards for printing. Note: Will generate sheets.", default=False)
 	parser.add_option("-c", "--card", dest="desired_cards", action="append", help="The name of a card to generate. Can be used multiple times to generate multiple cards. If none specified, all cards will be generated.")
-	parser.add_option("-t", "--type", dest="desired_types", action="append", help="The type of card to generate. Can be used multiple times to generate multiple types of cards. If none specified, all types will be generated.")
+	parser.add_option("-t", "--type", dest="desired_types", action="append", help="""The type of card to generate. Can be used multiple times to generate multiple types of cards. 
+			
+			Types are templates, found in the templates/ directory. Types are specified in the 'type' field of cards in card files (found in the cards/ directory).
+			
+			If none specified, all types will be generated.""")
 	parser.add_option("-i", "--input_file", dest="input_files", action="append", help="The input file (in the cards/ directory) to use for generating cards. Can be used multiple times to get cards from multiple input files. If none specified, all .json files in the cards/ directory will be used.")
 
 	(options, args) = parser.parse_args()
