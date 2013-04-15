@@ -476,8 +476,10 @@ class CardDrawer:
 		text_buffer = self.normal_margin
 		total_height = 0
 		# basic_height = self.fonts[font].size(" ")[1]
-		basic_height = self.safe_margin
+		# basic_height = self.safe_margin
+		basic_height = 0
 		cur_height = basic_height
+		line_padding = self.safe_margin
 		blank_line = True
 		words = text.split(" ")
 		rule_count = 0
@@ -518,14 +520,17 @@ class CardDrawer:
 							else:
 								font = code
 								continue
-					# End of Line
-					if code == "n":
+					# End of Line and Line Padding
+					if code == "n" or code == "lp":
 						lines += [{"width":cur_width, "height":cur_height, "align":align, "images":images}]
 						images = []
 						x = start_x
 						total_height += cur_height
 						cur_height = basic_height
 						cur_width = 0
+						if code == "lp":
+							lines += [{"width":0, "height":line_padding, "align":align, "images":[]}]
+							total_height += line_padding
 						continue
 					# Bold
 					elif code == "b":

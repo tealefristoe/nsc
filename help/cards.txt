@@ -22,7 +22,9 @@ other fields - Most information will occur in fields you define, which you will 
 
 Special field formatting:
 
-\\n - New line. Use to end the current line and start a new one. Use "\\n \\n" to create a blank line between the current line and the next one.
+\\n - New line. Use to end the current line and start a new one.
+
+\\lp - Line padding. Will end the current line and then add 1/8" of white space before the next line.
 
 \\b - Turn on or off bold. Make sure you turn off bold in the same string you turn it on, or bolding behavior might be strange, such as bolding text on the wrong card.
 
