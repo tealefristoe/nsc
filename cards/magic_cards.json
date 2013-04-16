@@ -7,7 +7,7 @@
 	"picture":"\\raven",
 	"type_line":"Creature - Bird",
 	"set_symbol":"\\mana_b",
-	"rules":"Flying \\n \\n \\tap : Each player discards a card at random.",
+	"rules":"Flying \\lp \\tap : Each player discards a card at random. \\n Use this ability as a sorcery.",
 	"power":"1",
 	"toughness":"1"},
 	{"name":"Scheming Jackal",

@@ -521,13 +521,6 @@ class CardDrawer:
 							else:
 								font = code
 								continue
-						if command == "color":
-							if code == "default":
-								color = default_color
-								continue
-							else:
-								color = self.getColor(code)
-								continue
 					# End of Line and Line Padding
 					if code == "n" or code == "lp":
 						lines += [{"width":cur_width, "height":cur_height, "align":align, "images":images}]

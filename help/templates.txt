@@ -60,6 +60,7 @@ Formatting:
 	"\\lp" creates a new line with 1/8" of white space before it.
 	"\\b" and "\\i" turn on and off bold and italic, respectively.
 	"\\font:font_choice" will switch the font to font_choice. "\\font:default" will return the font to the default font for the block.
+	"\\color:color_choice" will switch the font color to color_choice. color_choice can be a key from constants.COLOR_MAP, or it can be in the form (R,G,B). "\\color:default" will return the font color to the default color for the block.
 
 pos_x, pos_y - The position on the card where this block will be anchored. Defaults are "left, top"
 Legal options:
