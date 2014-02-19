@@ -1,8 +1,8 @@
 
 .gitignore~
-**/*.pyc
-**/*.swp
-**/*~
+*.pyc
+*.swp
+*~
 art/source
 
 *.py[cod]
