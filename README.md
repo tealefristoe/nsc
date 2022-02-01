@@ -30,10 +30,14 @@ Nothing Sacred Cards is written in Python and makes use of the Pygame and Report
 	2. Make sure you get the most recent version for python 2.7.
 	3. To use .png files, you will need the Python Imaging Library, which you can get here: http://www.pythonware.com/products/pil/
 
-Mac note: I don't know much about macs, and ReportLab seems to suck on it! Here are three possible solutions:
-	1. Install ReportLab on your mac following these nasy directions: http://two.pairlist.net/pipermail/reportlab-users/2009-May/008351.html
-	2. One of my testers was kind enough to create a list of the steps he used to get ReportLab setup on his machine. You can follow them here: https://github.com/tealefristoe/nsc/wiki/OS-X-Instructions
-	2. Do not bother with creating PDFs. This makes printing much more annoying, but at least you can generate cards. To do this:
+*Mac note:* I don't know much about macs, and ReportLab seems to suck on it! Here are three possible solutions:
+	
+	1. Install ReportLab on your mac following these nasy directions:
+	http://two.pairlist.net/pipermail/reportlab-users/2009-May/008351.html
+	2. One of my testers was kind enough to create a list of the steps he used to get ReportLab setup on his machine.
+	You can follow them here: https://github.com/tealefristoe/nsc/wiki/OS-X-Instructions
+	3. Do not bother with creating PDFs. This makes printing much more annoying, but at least you can generate cards.
+	To do this:	
 		a. Comment out lines 13 and 14 from card_drawer.py (put a # at the beginning of those lines).
 		b. Make sure you do not use the -p option when running Nothing Sacred Cards.
 
